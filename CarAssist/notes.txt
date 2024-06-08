@@ -1,0 +1,31 @@
+1. preprocess
+    a. read grasycale image
+    b, gaussian denoising
+    c. canny filtering
+    d. hough line detection with drawing
+2. lane detection
+    a.ROI : ask user ? fixed ? automatic?(search for a strong hortizontal hough line and crop there?)
+    b.filter hough lines (already done in 1. ?)
+    c. return most probable/ lines
+    d. polylines
+3. Vide o analysis
+    a. read video (display result)
+    b. "Glättungsfilter" -> Kalman?
+    (c. multi thread)
+4. Stereo Vision
+    a. calibration
+    b. depth map computation
+    c. improve lane detection with 3d
+    d. detect obstacle with 3d
+    e. display lanes and obstaclesd
+5.Extension
+    a. lane change detection
+    b. lane change alarm
+(6. UI)
+    a. user interface for display and interaction (in oder to change settings?)
+    b. display orignal and trsadnsfromed image
+7. Test (unit test?)
+
+
+8. AI Detection
+

@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FADDD842C0F72DD005DF824 /* imageProcessing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD822C0F72DD005DF824 /* imageProcessing.cpp */; };
+		1FADDD8D2C0F79E8005DF824 /* stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD8B2C0F79E8005DF824 /* stereo.cpp */; };
+		1FADDD952C109ED4005DF824 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD932C109ED4005DF824 /* ai.cpp */; };
+		1FADDDB22C12648B005DF824 /* laneDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDDB12C12648B005DF824 /* laneDetection.cpp */; };
+		1FADDDB42C1264AC005DF824 /* videoAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */; };
+		1FADDDCC2C127FBD005DF824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADFBE82C0F083E006BE25E /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1FADFBE32C0F083E006BE25E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1FADDD822C0F72DD005DF824 /* imageProcessing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = imageProcessing.cpp; sourceTree = "<group>"; };
+		1FADDD832C0F72DD005DF824 /* imageProcessing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = imageProcessing.hpp; sourceTree = "<group>"; };
+		1FADDD862C0F7307005DF824 /* laneDetection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = laneDetection.hpp; sourceTree = "<group>"; };
+		1FADDD8B2C0F79E8005DF824 /* stereo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stereo.cpp; sourceTree = "<group>"; };
+		1FADDD8C2C0F79E8005DF824 /* stereo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stereo.hpp; sourceTree = "<group>"; };
+		1FADDD8E2C0F7AF4005DF824 /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
+		1FADDD8F2C0F7E5F005DF824 /* road1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = road1.jpg; sourceTree = "<group>"; };
+		1FADDD912C0F9B97005DF824 /* c-est-une-premiere-en-france-une-route-departementale-va-etre-fermee-a-des-fins-de-preservation-des-especes-animales-photo-d-illustration-jaclou-dl-pixabay-1638451755.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "c-est-une-premiere-en-france-une-route-departementale-va-etre-fermee-a-des-fins-de-preservation-des-especes-animales-photo-d-illustration-jaclou-dl-pixabay-1638451755.jpg"; sourceTree = "<group>"; };
+		1FADDD922C0F9B97005DF824 /* Route-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Route-7.jpg"; sourceTree = "<group>"; };
+		1FADDD932C109ED4005DF824 /* ai.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
+		1FADDD942C109ED4005DF824 /* ai.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ai.hpp; sourceTree = "<group>"; };
+		1FADDDA92C125F15005DF824 /* test_image_processing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_image_processing.cpp; sourceTree = "<group>"; };
+		1FADDDAE2C126000005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		1FADDDAF2C12633F005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		1FADDDB12C12648B005DF824 /* laneDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = laneDetection.cpp; sourceTree = "<group>"; };
+		1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = videoAnalysis.cpp; sourceTree = "<group>"; };
+		1FADDDB52C1264B4005DF824 /* videoAnalysis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = videoAnalysis.hpp; sourceTree = "<group>"; };
+		1FADDDB62C1265DB005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		1FADDDCD2C14AC09005DF824 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		1FADFBE52C0F083E006BE25E /* CarAssist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarAssist; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FADFBE82C0F083E006BE25E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1FADFBE22C0F083E006BE25E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FADDD902C0F9B5F005DF824 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				1FADDD912C0F9B97005DF824 /* c-est-une-premiere-en-france-une-route-departementale-va-etre-fermee-a-des-fins-de-preservation-des-especes-animales-photo-d-illustration-jaclou-dl-pixabay-1638451755.jpg */,
+				1FADDD922C0F9B97005DF824 /* Route-7.jpg */,
+				1FADDD8F2C0F7E5F005DF824 /* road1.jpg */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		1FADDDAB2C125F9C005DF824 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				1FADDDA92C125F15005DF824 /* test_image_processing.cpp */,
+				1FADDDAE2C126000005DF824 /* CMakeLists.txt */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		1FADDDB02C12635E005DF824 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1FADFBE82C0F083E006BE25E /* main.cpp */,
+				1FADDD822C0F72DD005DF824 /* imageProcessing.cpp */,
+				1FADDD832C0F72DD005DF824 /* imageProcessing.hpp */,
+				1FADDD932C109ED4005DF824 /* ai.cpp */,
+				1FADDD942C109ED4005DF824 /* ai.hpp */,
+				1FADDDB12C12648B005DF824 /* laneDetection.cpp */,
+				1FADDD862C0F7307005DF824 /* laneDetection.hpp */,
+				1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */,
+				1FADDDB52C1264B4005DF824 /* videoAnalysis.hpp */,
+				1FADDD8B2C0F79E8005DF824 /* stereo.cpp */,
+				1FADDD8C2C0F79E8005DF824 /* stereo.hpp */,
+				1FADDDB62C1265DB005DF824 /* CMakeLists.txt */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		1FADFBDC2C0F083E006BE25E = {
+			isa = PBXGroup;
+			children = (
+				1FADDDCD2C14AC09005DF824 /* README.txt */,
+				1FADFBE72C0F083E006BE25E /* CarAssist */,
+				1FADFBE62C0F083E006BE25E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1FADFBE62C0F083E006BE25E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1FADFBE52C0F083E006BE25E /* CarAssist */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1FADFBE72C0F083E006BE25E /* CarAssist */ = {
+			isa = PBXGroup;
+			children = (
+				1FADDDAF2C12633F005DF824 /* CMakeLists.txt */,
+				1FADDD8E2C0F7AF4005DF824 /* notes.txt */,
+				1FADDDB02C12635E005DF824 /* src */,
+				1FADDDAB2C125F9C005DF824 /* test */,
+				1FADDD902C0F9B5F005DF824 /* img */,
+			);
+			path = CarAssist;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1FADFBE42C0F083E006BE25E /* CarAssist */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FADFBEC2C0F083E006BE25E /* Build configuration list for PBXNativeTarget "CarAssist" */;
+			buildPhases = (
+				1FADFBE12C0F083E006BE25E /* Sources */,
+				1FADFBE22C0F083E006BE25E /* Frameworks */,
+				1FADFBE32C0F083E006BE25E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarAssist;
+			productName = CarAssist;
+			productReference = 1FADFBE52C0F083E006BE25E /* CarAssist */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1FADFBDD2C0F083E006BE25E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					1FADFBE42C0F083E006BE25E = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 1FADFBE02C0F083E006BE25E /* Build configuration list for PBXProject "CarAssist" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1FADFBDC2C0F083E006BE25E;
+			productRefGroup = 1FADFBE62C0F083E006BE25E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1FADFBE42C0F083E006BE25E /* CarAssist */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1FADFBE12C0F083E006BE25E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FADDDCC2C127FBD005DF824 /* main.cpp in Sources */,
+				1FADDDB22C12648B005DF824 /* laneDetection.cpp in Sources */,
+				1FADDD842C0F72DD005DF824 /* imageProcessing.cpp in Sources */,
+				1FADDD8D2C0F79E8005DF824 /* stereo.cpp in Sources */,
+				1FADDDB42C1264AC005DF824 /* videoAnalysis.cpp in Sources */,
+				1FADDD952C109ED4005DF824 /* ai.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1FADFBEA2C0F083E006BE25E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				"ALWAYS_SEARCH_USER_PATHS[arch=*]" = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/opt/opencv/include/opencv4,
+					"/opt/homebrew/opt/googletest/include/gtest/**",
+					/opt/homebrew/opt/googletest/include,
+					"/opt/homebrew/opt/googletest/include/googletest/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/homebrew/opt/opencv/lib,
+					"/opt/homebrew/opt/googletest/lib/**",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-L/opt/homebrew/Cellar/opencv/4.9.0_8/lib",
+					"-lopencv_gapi",
+					"-lopencv_stitching",
+					"-lopencv_alphamat",
+					"-lopencv_aruco",
+					"-lopencv_bgsegm",
+					"-lopencv_bioinspired",
+					"-lopencv_ccalib",
+					"-lopencv_dnn_objdetect",
+					"-lopencv_dnn_superres",
+					"-lopencv_dpm",
+					"-lopencv_face",
+					"-lopencv_freetype",
+					"-lopencv_fuzzy",
+					"-lopencv_hfs",
+					"-lopencv_img_hash",
+					"-lopencv_intensity_transform",
+					"-lopencv_line_descriptor",
+					"-lopencv_mcc",
+					"-lopencv_quality",
+					"-lopencv_rapid",
+					"-lopencv_reg",
+					"-lopencv_rgbd",
+					"-lopencv_saliency",
+					"-lopencv_sfm",
+					"-lopencv_stereo",
+					"-lopencv_structured_light",
+					"-lopencv_phase_unwrapping",
+					"-lopencv_superres",
+					"-lopencv_optflow",
+					"-lopencv_surface_matching",
+					"-lopencv_tracking",
+					"-lopencv_highgui",
+					"-lopencv_datasets",
+					"-lopencv_text",
+					"-lopencv_plot",
+					"-lopencv_videostab",
+					"-lopencv_videoio",
+					"-lopencv_viz",
+					"-lopencv_wechat_qrcode",
+					"-lopencv_xfeatures2d",
+					"-lopencv_shape",
+					"-lopencv_ml",
+					"-lopencv_ximgproc",
+					"-lopencv_video",
+					"-lopencv_xobjdetect",
+					"-lopencv_objdetect",
+					"-lopencv_calib3d",
+					"-lopencv_imgcodecs",
+					"-lopencv_features2d",
+					"-lopencv_dnn",
+					"-lopencv_flann",
+					"-lopencv_xphoto",
+					"-lopencv_photo",
+					"-lopencv_imgproc",
+					"-lopencv_core",
+					"-L/opt/homebrew/Cellar/googletest/1.14.0/lib",
+					"-lgtest",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1FADFBEB2C0F083E006BE25E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				"ALWAYS_SEARCH_USER_PATHS[arch=*]" = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/opt/opencv/include/opencv4,
+					"/opt/homebrew/opt/googletest/include/gtest/**",
+					/opt/homebrew/opt/googletest/include,
+					"/opt/homebrew/opt/googletest/include/googletest/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/homebrew/opt/opencv/lib,
+					"/opt/homebrew/opt/googletest/lib/**",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-L/opt/homebrew/Cellar/opencv/4.9.0_8/lib",
+					"-lopencv_gapi",
+					"-lopencv_stitching",
+					"-lopencv_alphamat",
+					"-lopencv_aruco",
+					"-lopencv_bgsegm",
+					"-lopencv_bioinspired",
+					"-lopencv_ccalib",
+					"-lopencv_dnn_objdetect",
+					"-lopencv_dnn_superres",
+					"-lopencv_dpm",
+					"-lopencv_face",
+					"-lopencv_freetype",
+					"-lopencv_fuzzy",
+					"-lopencv_hfs",
+					"-lopencv_img_hash",
+					"-lopencv_intensity_transform",
+					"-lopencv_line_descriptor",
+					"-lopencv_mcc",
+					"-lopencv_quality",
+					"-lopencv_rapid",
+					"-lopencv_reg",
+					"-lopencv_rgbd",
+					"-lopencv_saliency",
+					"-lopencv_sfm",
+					"-lopencv_stereo",
+					"-lopencv_structured_light",
+					"-lopencv_phase_unwrapping",
+					"-lopencv_superres",
+					"-lopencv_optflow",
+					"-lopencv_surface_matching",
+					"-lopencv_tracking",
+					"-lopencv_highgui",
+					"-lopencv_datasets",
+					"-lopencv_text",
+					"-lopencv_plot",
+					"-lopencv_videostab",
+					"-lopencv_videoio",
+					"-lopencv_viz",
+					"-lopencv_wechat_qrcode",
+					"-lopencv_xfeatures2d",
+					"-lopencv_shape",
+					"-lopencv_ml",
+					"-lopencv_ximgproc",
+					"-lopencv_video",
+					"-lopencv_xobjdetect",
+					"-lopencv_objdetect",
+					"-lopencv_calib3d",
+					"-lopencv_imgcodecs",
+					"-lopencv_features2d",
+					"-lopencv_dnn",
+					"-lopencv_flann",
+					"-lopencv_xphoto",
+					"-lopencv_photo",
+					"-lopencv_imgproc",
+					"-lopencv_core",
+					"-L/opt/homebrew/Cellar/googletest/1.14.0/lib",
+					"-lgtest",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1FADFBED2C0F083E006BE25E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		1FADFBEE2C0F083E006BE25E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1FADFBE02C0F083E006BE25E /* Build configuration list for PBXProject "CarAssist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FADFBEA2C0F083E006BE25E /* Debug */,
+				1FADFBEB2C0F083E006BE25E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FADFBEC2C0F083E006BE25E /* Build configuration list for PBXNativeTarget "CarAssist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FADFBED2C0F083E006BE25E /* Debug */,
+				1FADFBEE2C0F083E006BE25E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1FADFBDD2C0F083E006BE25E /* Project object */;
+}
