@@ -5,4 +5,5 @@ carAssist/build/
 build/
 carAssist/img/
 img/
-
+*.zip
+*.7zip
