@@ -1,6 +1,7 @@
 # CarAssist
 
 CarAssist is a project for lane detection and stereovision using OpenCV. The project includes various image processing techniques and utilizes Hough Lines for lane detection. It can operate in both 2D and 3D modes to perform lane detection and disparity map computation.
+Work is still needed to get a real object detection from stereovision.
 
 ## Table of Contents
 
@@ -16,8 +17,7 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
 
 - Lane detection using Hough Lines.
 - Stereovision for disparity map computation.
-- Configurable to run in 2D or 3D mode.
-- Display of intermediate results.
+- Configurable to run in 2D (lane detection) or 3D mode (obstacle detection).
 - Multithreading for improved performance.
 
 ## Requirements
@@ -35,7 +35,6 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
    cd carAssist
    ```
 2. **Build the project:**
-   From CarAssist folder do:  
    ```
     mkdir build
     cd build
@@ -44,7 +43,7 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
     ```
 ## Usage
 ### Running the Program
-To run the program, navigate to the **build** directory and execute the program:
+To run the program, navigate to the **build/src** directory and execute the program:
     ```
     ./CarAssist [options] [path]
     ```
@@ -70,6 +69,13 @@ To run the program, navigate to the **build** directory and execute the program:
 - Run in 3D mode with intermediate results display and specified path:
    ```
     ./CarAssist 3d disp /path/to/images
+   ```
+
+### Testing
+GoogleTests are implemented to test the main function from the lane detection algorithm.
+   ```
+   cd buidl/test
+./test_image_processing
    ```
 ## Code Structure
 
