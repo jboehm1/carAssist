@@ -1,6 +1,6 @@
 # CarAssist
 
-CarAssist is a project for lane detection and stereovision using OpenCV. The project includes various image processing techniques and utilizes Kalman filters for lane detection. It can operate in both 2D and 3D modes to perform lane detection and disparity map computation.
+CarAssist is a project for lane detection and stereovision using OpenCV. The project includes various image processing techniques and utilizes Hough Lines for lane detection. It can operate in both 2D and 3D modes to perform lane detection and disparity map computation.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
 
 ## Features
 
-- Lane detection using Kalman filters.
+- Lane detection using Hough Lines.
 - Stereovision for disparity map computation.
 - Configurable to run in 2D or 3D mode.
 - Display of intermediate results.
