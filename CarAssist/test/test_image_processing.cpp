@@ -7,7 +7,8 @@
 #include "../src/imageProcessing.hpp" // Adjust path if needed
 #include "../src/laneDetection.hpp"    // Adjust path if needed
 #include "../src/stereo.hpp"           // Adjust path if needed
-#include "../src/videoAnalysis.hpp"    // Adjust path if needed
+
+std::string imagePath = "../CarAssist/img/Route-7.jpg"; // Default path
 
 // Test case for initKalmanFilter function
 TEST(ImageProcessingTest, InitKalmanFilter) {
@@ -82,6 +83,14 @@ TEST(ImageProcessingTest, Filter) {
 }
 
 int main(int argc, char **argv) {
+
     ::testing::InitGoogleTest(&argc, argv);
+    
+    if (argc > 1) {
+            imagePath = argv[1];
+    } else {
+        std::cout << "No path provided, using default path: " << imagePath << std::endl;
+    }
+    
     return RUN_ALL_TESTS();
 }

@@ -25,7 +25,8 @@ int main(int argc, const char * argv[]) {
     // Default argument value
     bool DISP=false;
     bool use3D = false;
-    std::string imagePath = "../CarAssist/img/20"; // Default path
+    std::string imagePath = "../../img/20"; // Default path
+    
     // Check for command-line arguments
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -40,23 +41,13 @@ int main(int argc, const char * argv[]) {
         }
     }
     // Print current working directory for debugging
-        std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
         std::cout << "Using image path: " << imagePath << std::endl;
-
-    
-    
-    
+  
     // Convert to absolute path
     std::__fs::filesystem::path absolutePath = std::__fs::filesystem::absolute(std::__fs::filesystem::path(imagePath));
        std::cout << "Starting..." << std::endl;
        std::cout << "Use argument `3d` to run stereovision, `disp to display intermediate filtering in lane detection!" << std::endl;
-       std::cout << "Press ESC to quit" << std::endl;
-       std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
-       std::cout << "Using image path: " << absolutePath << std::endl;
-    
-    
-    
-    
+
     // Initialize Kalman filters for left and right lanes
     cv::KalmanFilter avgLeft1 = ImageProcessing::initKalmanFilter();
     cv::KalmanFilter avgLeft2 = ImageProcessing::initKalmanFilter();
@@ -102,7 +93,7 @@ int main(int argc, const char * argv[]) {
         Stereo::setCalibrationParameters(7.188560000000e+02, 7.188560000000e+02, 6.071928000000e+02, 1.852157000000e+02, 3.861448000000e+02 / 7.188560000000e+02);
 
         std::vector<cv::String> leftImages, rightImages;
-        std::string_view path="/Users/jeanb/Documents/weiterbildung/cpp/CarAssist/CarAssist/img/20";
+        std::string_view path=imagePath;//"/Users/jeanb/Documents/weiterbildung/cpp/CarAssist/CarAssist/img/20";
         Stereo::loadImage(path, leftImages, rightImages  );
         for ( int i = 0; i<leftImages.size(); i++){
             auto start = std::chrono::high_resolution_clock::now();

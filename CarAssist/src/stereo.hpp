@@ -18,13 +18,13 @@
 
 namespace Stereo{
     extern double fx, fy, cx, cy, baseline;
-void setCalibrationParameters(double fx_, double fy_, double cx_, double cy_, double baseline_);
+    void setCalibrationParameters(double fx_, double fy_, double cx_, double cy_, double baseline_);
     void computeDisparity(const cv::Mat& a, const cv::Mat& b, cv::Mat& disparity);
     void loadImage(std::string_view& path, std::vector<cv::String>&, std::vector<cv::String>&);
     void preprocessDisp(const cv::Mat& leftImage, const cv::Mat& rightImage, const cv::Mat& disparity, cv::Mat& finalDisplay);
-void depthMap(const cv::Mat& );
-double depthPoint(const cv::Mat& disparity, const cv::Point& point);
-bool depthRegion(const cv::Mat& disparity, cv::Rect& roi, double);
+    void depthMap(const cv::Mat& );
+    double depthPoint(const cv::Mat& disparity, const cv::Point& point);
+    bool depthRegion(const cv::Mat& disparity, cv::Rect& roi, double);
 
 };
 #endif /* _dAnalysis_hpp */

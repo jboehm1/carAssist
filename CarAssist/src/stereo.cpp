@@ -31,10 +31,12 @@ void Stereo::loadImage(std::string_view& path,std::vector<cv::String>& leftImage
         //return -1;
     }
 }
+
 void computeDepthMap(const cv::Mat& leftImage, const cv::Mat& rightImage, cv::Mat& disparity, int numDisparities){
     cv::Ptr<cv::StereoBM> stereo = cv::StereoBM::create(numDisparities, 9); //16 9
     stereo->compute(leftImage, rightImage, disparity);
 }
+
 void computeDepthMapAdvanced(const cv::Mat& left, const cv::Mat& right, cv::Mat& disparity, int numDisparities) {
     // Preprocessing steps
     cv::Mat left_gray, right_gray;
@@ -72,9 +74,8 @@ void computeDepthMapAdvanced(const cv::Mat& left, const cv::Mat& right, cv::Mat&
     // Compute the disparity map
     //cv::Mat disparity16S;
     stereo->compute(left_gray, right_gray, disparity);
-
-    
 }
+
 void Stereo::computeDisparity(const cv::Mat& leftImage, const cv::Mat& rightImage, cv::Mat& disparity){
     
     cv::Mat left_gray, right_gray;
@@ -95,13 +96,9 @@ void Stereo::computeDisparity(const cv::Mat& leftImage, const cv::Mat& rightImag
     // Apply a color map to the disparity map
     cv::applyColorMap(disparity, disparity, cv::COLORMAP_JET);
     // Post-processing: Apply a median filter to the disparity map
-    cv::medianBlur(disparity, disparity, 3);
-    
-    //cv::imshow("Left Image", leftImage);
-    //cv::imshow("Right Image", rightImage);
-    //cv::imshow("Disparity Map", disp8);
-    //cv::waitKey(1);
+    cv::medianBlur(disparity, disparity, 5);
 }
+
 void Stereo::preprocessDisp(const cv::Mat& leftImage, const cv::Mat& rightImage, const cv::Mat& disparity, cv::Mat& finalDisplay){
     
     cv::Mat left_resized = leftImage;
@@ -117,11 +114,9 @@ void Stereo::preprocessDisp(const cv::Mat& leftImage, const cv::Mat& rightImage,
     cv::resize(combinedLR, combinedLR, cv::Size(disparity.cols, disparity.rows/2));
     // Concatenate combined left-right image with disparity map vertically
     cv::vconcat(combinedLR, disparity, finalDisplay);
-    
 }
 
 void Stereo::depthMap(const cv::Mat& disparity){
-    
     // Convert disparity to depth
     cv::Mat depthMap(disparity.size(), CV_64F);
     for (int y = 0; y < disparity.rows; y++) {
@@ -135,6 +130,7 @@ void Stereo::depthMap(const cv::Mat& disparity){
         }
     }
 }
+
 bool Stereo::depthRegion(const cv::Mat& disparity, cv::Rect& roi, double meanValue){
     
     // Convert a region to a depth map and compute a mean value among non zero values
@@ -148,7 +144,7 @@ bool Stereo::depthRegion(const cv::Mat& disparity, cv::Rect& roi, double meanVal
             if (disparityValue > 0) {
                 double depthValue = (fx * baseline) / disparityValue;
                 sum+=depthValue;
-                std::cout << depthValue << std::endl;
+                //std::cout << depthValue << std::endl;
 
                 if (depthValue>mem)
                     mem = depthValue;
@@ -161,9 +157,10 @@ bool Stereo::depthRegion(const cv::Mat& disparity, cv::Rect& roi, double meanVal
     }
     
     meanValue=sum/(roi.width*roi.height);//count;
-    std::cout << mem << std::endl;
+    //std::cout << mem << std::endl;
     return count>roi.width*roi.height/2;
 }
+
 double Stereo::depthPoint(const cv::Mat& disparity, const cv::Point& point){
     double result3dPoint;
     double disparityValue = disparity.at<uchar>(point.y, point.x);
