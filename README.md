@@ -58,8 +58,9 @@ This project demonstrates the use of mono and stereo vision for real-time obstac
 
 ## Usage
 Run the executable with the desired input source (e.g., image sequence, video):
-```sh
-./StereoVisionObstacleDetection
+    ```sh
+    ./StereoVisionObstacleDetection
+    
 
 
 
@@ -104,6 +105,14 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
    ```sh
    git clone https://github.com/jboehm1/carAssist.git
    cd carAssist
+    ```
+
+2. **Build the project:**
+   ```mkdir build
+    cd build
+    cmake ..
+    make
+    ```
 
 
 
@@ -143,53 +152,48 @@ CarAssist is a project for lane detection and stereovision using OpenCV. The pro
    ```sh
    git clone https://github.com/jboehm1/carAssist.git
    cd carAssist
-      ```
-Build the project:
-   ```sh
-Copy code
-mkdir build
-cd build
-cmake ..
-make
    ```
+2. **Build the project:**
+   ```sh
+    Copy code
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ```
 ## Usage
 ### Running the Program
-To run the program, navigate to the build directory and execute the program:
-   ```sh
-Copy code
-./CarAssist [options] [path]
+To run the program, navigate to the **build** directory and execute the program:
+    ```sh
+    ./CarAssist [options] [path]
+    ```
 ### Options
-3d: Run in 3D mode (stereovision).
-disp: Display intermediate filtering results.
+- 3d: Run in 3D mode (stereovision).
+- disp: Display intermediate filtering results.
 ### Arguments
-[path]: Path to the images. Defaults to ../CarAssist/img/20.
-### Examples
-Run in 2D mode with default path:
-   ```
-sh
-Copy code
-./CarAssist
-   ```
-Run in 3D mode with default path:
-   ```
-sh
-Copy code
-./CarAssist 3d
-   ```
-Run in 2D mode with intermediate results display and default path:
+- [path]: Path to the images. Defaults to ../CarAssist/img/20.
 
-sh
-Copy code
-./CarAssist disp
-Run in 3D mode with intermediate results display and specified path:
+### Examples
+- Run in 2D mode with default path:
+   ```sh
+    ./CarAssist
    ```
-sh
-Copy code
-./CarAssist 3d disp /path/to/images
+- Run in 3D mode with default path:
+   ```
+    sh
+    ./CarAssist 3d
+   ```
+- Run in 2D mode with intermediate results display and default path:
+    ```sh
+    ./CarAssist disp
+    ```
+- Run in 3D mode with intermediate results display and specified path:
+   ```
+    sh
+    Copy code
+    ./CarAssist 3d disp /path/to/images
    ```
 ## Code Structure
-css
-Copy code
 CarAssist/
 ├── CMakeLists.txt
 ├── README.md
@@ -215,9 +219,9 @@ CarAssist/
 ## Contributing
 Contributions are welcome! Please follow these steps:
 
-Fork the repository.
-Create a new branch.
-Make your changes.
-Submit a pull request.
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
 ##  License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
