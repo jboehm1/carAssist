@@ -194,6 +194,8 @@ To run the program, navigate to the **build** directory and execute the program:
     ./CarAssist 3d disp /path/to/images
    ```
 ## Code Structure
+
+```bash
 CarAssist/
 ├── CMakeLists.txt
 ├── README.md
@@ -214,16 +216,7 @@ CarAssist/
 └── 20/
 └── image_0/
 └── *.png
-
-.
-├── ...
-├── docs                    # Documentation files (alternatively `doc`)
-│   ├── TOC.md              # Table of contents
-│   ├── faq.md              # Frequently asked questions
-│   ├── misc.md             # Miscellaneous information
-│   ├── usage.md            # Getting started guide
-│   └── ...                 # etc.
-└── ...
+```
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
