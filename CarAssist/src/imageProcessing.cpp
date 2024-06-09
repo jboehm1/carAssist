@@ -66,7 +66,57 @@ void ImageProcessing::crop(const cv::Mat& src, cv::Mat& dst, int cropPercentage)
     cv::Rect myROI(0, src.rows - newHeight, src.cols, newHeight);
     dst = src(myROI).clone();
 }
+void ImageProcessing::accumulateLinePoints(const std::vector<cv::Vec2f>& lines, cv::Mat& cdst, cv::Point& leftSumPt1, cv::Point& leftSumPt2, int& leftCount, cv::Point& rightSumPt1, cv::Point& rightSumPt2, int& rightCount, bool drawAllLines) {
+    for (size_t i = 0; i < lines.size(); i++) {
+        float rho = lines[i][0], theta = lines[i][1];
 
+        if (rho < -310 || rho > 310) {
+            cv::Point pt1, pt2;
+            double a = cos(theta), b = sin(theta);
+            double x0 = a * rho, y0 = b * rho;
+            pt1.x = cvRound(x0 + 1000 * (-b));
+            pt1.y = cvRound(y0 + 1000 * (a));
+            pt2.x = cvRound(x0 - 1000 * (-b));
+            pt2.y = cvRound(y0 - 1000 * (a));
+
+            if (rho < -310) {
+                leftSumPt1 += pt1;
+                leftSumPt2 += pt2;
+                leftCount++;
+                if (drawAllLines) cv::line(cdst, pt1, pt2, cv::Scalar(255, 0, 0), 1, cv::LINE_AA);
+            } else {
+                rightSumPt1 += pt1;
+                rightSumPt2 += pt2;
+                rightCount++;
+                if (drawAllLines) cv::line(cdst, pt1, pt2, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
+            }
+        }
+    }
+}
+void ImageProcessing::applyMask(const cv::Mat& binary, cv::Mat& masked, bool DISP) {
+    cv::Mat mask = cv::Mat::zeros(binary.size(), binary.type());
+    cv::Point points[1][3] = { {cv::Point(0, binary.rows), cv::Point(binary.cols, binary.rows), cv::Point(binary.cols / 2, 0)} };
+    const cv::Point* ppt[1] = { points[0] };
+    int npt[] = { 3 };
+    cv::fillPoly(mask, ppt, npt, 1, cv::Scalar(255, 255, 255), 8);
+    binary.copyTo(masked, mask);
+    if (DISP) disp(masked, "masked", 1);
+}
+void ImageProcessing::updateKalmanFilter(cv::KalmanFilter& kalmanFilter, cv::Point& avgPt, const cv::Point& sumPt, int count, bool& detected) {
+    if (count > 0) {
+        avgPt = cv::Point(sumPt.x / count, sumPt.y / count);
+
+        cv::Mat measurement = (cv::Mat_<float>(2, 1) << avgPt.x, avgPt.y);
+        kalmanFilter.correct(measurement);
+        cv::Mat prediction = kalmanFilter.predict();
+        avgPt = cv::Point(prediction.at<float>(0), prediction.at<float>(1));
+
+        detected = true;
+    } else {
+        cv::Mat prediction = kalmanFilter.predict();
+        avgPt = cv::Point(prediction.at<float>(0), prediction.at<float>(1));
+    }
+}
 void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter& leftKalmanFilter1, cv::KalmanFilter& leftKalmanFilter2, cv::KalmanFilter& rightKalmanFilter1, cv::KalmanFilter& rightKalmanFilter2, bool DISP) {
     if (src.empty()) {
         std::cerr << "Input image is empty!" << std::endl;
@@ -78,6 +128,8 @@ void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter&
     // Convert to grey
     cv::Mat grey, hsv;
     cv::Mat cdst;
+    bool SOEBEL = false;
+    bool DISP_HOUGHLINEP = false;
     if(src.channels()==1){
         grey=src.clone();
         cv::cvtColor(src, cdst, cv::COLOR_GRAY2BGR);
@@ -131,20 +183,8 @@ void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter&
     if(DISP) disp(binary, "morph", 1);
     
     // Create a mask with the same size as the image, initially set to black
-    cv::Mat mask = cv::Mat::zeros(binary.size(), binary.type());
-    // Define the points of the triangle
-    cv::Point points[1][3];
-    points[0][0] = cv::Point(0, binary.rows);
-    points[0][1] = cv::Point(binary.cols, binary.rows);
-    points[0][2] = cv::Point(binary.cols / 2, 0);
-    const cv::Point* ppt[1] = { points[0] };
-    int npt[] = { 3 };
-    // Draw the filled white triangle on the mask
-    cv::fillPoly(mask, ppt, npt, 1, cv::Scalar(255, 255, 255), 8);
-    // Apply the mask to the image
     cv::Mat masked;
-    binary.copyTo(masked, mask);
-    if(DISP) disp(masked,"masked",1);
+    applyMask(binary, masked, DISP);
     
     //cv::cvtColor(grey, cdst, cv::COLOR_GRAY2BGR);
     //cdst = src;
@@ -155,98 +195,30 @@ void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter&
     HoughLines(masked, lines, 1, CV_PI / 180, 55, 0, 0);//, -CV_PI/4, CV_PI/4);
 
     // Variables to accumulate points
-    
-    bool leftDetected = false;
-    bool rightDetected = false;
     cv::Point leftSumPt1(0, 0), leftSumPt2(0, 0);
     cv::Point rightSumPt1(0, 0), rightSumPt2(0, 0);
     int leftCount = 0, rightCount = 0;
     bool drawAllLines=false;
-    for (size_t i = 0; i < lines.size(); i++) {
-        float rho = lines[i][0], theta = lines[i][1];
+    
+    accumulateLinePoints(lines, cdst, leftSumPt1, leftSumPt2, leftCount, rightSumPt1, rightSumPt2, rightCount, drawAllLines);
 
-        if (rho < -310 || rho > 310) {
-            cv::Point pt1, pt2;
-            double a = cos(theta), b = sin(theta);
-            double x0 = a * rho, y0 = b * rho;
-            pt1.x = cvRound(x0 + 1000 * (-b));
-            pt1.y = cvRound(y0 + 1000 * (a));
-            pt2.x = cvRound(x0 - 1000 * (-b));
-            pt2.y = cvRound(y0 - 1000 * (a));
-
-            if (rho < -310) {
-                leftSumPt1 += pt1;
-                leftSumPt2 += pt2;
-                leftCount++;
-                if (drawAllLines)
-                    cv::line(cdst, pt1, pt2, cv::Scalar(255, 0, 0), 1, cv::LINE_AA);
-            } else {
-                rightSumPt1 += pt1;
-                rightSumPt2 += pt2;
-                rightCount++;
-                if (drawAllLines)
-                    cv::line(cdst, pt1, pt2, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
-            }
-        }
-    }
+    
     
     cv::Point avgLeftPt1, avgLeftPt2, avgRightPt1, avgRightPt2;
+    bool leftDetected = false;
+    bool rightDetected = false;
 
-        if (leftCount > 0) {
-            avgLeftPt1 = cv::Point(leftSumPt1.x / leftCount, leftSumPt1.y / leftCount);
-            avgLeftPt2 = cv::Point(leftSumPt2.x / leftCount, leftSumPt2.y / leftCount);
-
-            // Update Kalman filter with measurements
-            cv::Mat measurementLeft1 = (cv::Mat_<float>(2, 1) << avgLeftPt1.x, avgLeftPt1.y);
-            leftKalmanFilter1.correct(measurementLeft1);
-            cv::Mat predictionLeft1 = leftKalmanFilter1.predict();
-            avgLeftPt1 = cv::Point(predictionLeft1.at<float>(0), predictionLeft1.at<float>(1));
-
-            cv::Mat measurementLeft2 = (cv::Mat_<float>(2, 1) << avgLeftPt2.x, avgLeftPt2.y);
-            leftKalmanFilter2.correct(measurementLeft2);
-            cv::Mat predictionLeft2 = leftKalmanFilter2.predict();
-            avgLeftPt2 = cv::Point(predictionLeft2.at<float>(0), predictionLeft2.at<float>(1));
-
-            leftDetected = true;
-        } else {
-            // Predict next position if no measurement is found
-            cv::Mat predictionLeft1 = leftKalmanFilter1.predict();
-            avgLeftPt1 = cv::Point(predictionLeft1.at<float>(0), predictionLeft1.at<float>(1));
-
-            cv::Mat predictionLeft2 = leftKalmanFilter2.predict();
-            avgLeftPt2 = cv::Point(predictionLeft2.at<float>(0), predictionLeft2.at<float>(1));
-        }
-
-        if (rightCount > 0) {
-            avgRightPt1 = cv::Point(rightSumPt1.x / rightCount, rightSumPt1.y / rightCount);
-            avgRightPt2 = cv::Point(rightSumPt2.x / rightCount, rightSumPt2.y / rightCount);
-
-            // Update Kalman filter with measurements
-            cv::Mat measurementRight1 = (cv::Mat_<float>(2, 1) << avgRightPt1.x, avgRightPt1.y);
-            rightKalmanFilter1.correct(measurementRight1);
-            cv::Mat predictionRight1 = rightKalmanFilter1.predict();
-            avgRightPt1 = cv::Point(predictionRight1.at<float>(0), predictionRight1.at<float>(1));
-
-            cv::Mat measurementRight2 = (cv::Mat_<float>(2, 1) << avgRightPt2.x, avgRightPt2.y);
-            rightKalmanFilter2.correct(measurementRight2);
-            cv::Mat predictionRight2 = rightKalmanFilter2.predict();
-            avgRightPt2 = cv::Point(predictionRight2.at<float>(0), predictionRight2.at<float>(1));
-
-            rightDetected = true;
-        } else {
-            // Predict next position if no measurement is found
-            cv::Mat predictionRight1 = rightKalmanFilter1.predict();
-            avgRightPt1 = cv::Point(predictionRight1.at<float>(0), predictionRight1.at<float>(1));
-
-            cv::Mat predictionRight2 = rightKalmanFilter2.predict();
-            avgRightPt2 = cv::Point(predictionRight2.at<float>(0), predictionRight2.at<float>(1));
-        }
+    updateKalmanFilter(leftKalmanFilter1, avgLeftPt1, leftSumPt1, leftCount, leftDetected);
+    updateKalmanFilter(leftKalmanFilter2, avgLeftPt2, leftSumPt2, leftCount, leftDetected);
+    updateKalmanFilter(rightKalmanFilter1, avgRightPt1, rightSumPt1, rightCount, rightDetected);
+    updateKalmanFilter(rightKalmanFilter2, avgRightPt2, rightSumPt2, rightCount, rightDetected);
 
         // Draw lines
         if (leftDetected) {
             cv::line(cdst, avgLeftPt1, avgLeftPt2, cv::Scalar(255, 0, 0), 2, cv::LINE_AA);
         } else {
             cv::line(cdst, avgLeftPt1, avgLeftPt2, cv::Scalar(0, 0, 255), 2, cv::LINE_AA); // Red to indicate prediction
+            cv::putText(cdst, "One lane detected", cv::Point(src.cols/2-100,src.rows/2), 1, 2, cv::Scalar(0, 0, 255), 2);
         }
 
         if (rightDetected) {
@@ -257,11 +229,9 @@ void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter&
 
     // Find the intersection points with the lower border
     cv::Point leftIntersection, rightIntersection;
-
     if (leftCount > 0) {
         leftIntersection = findIntersectionWithLowerBorder(avgLeftPt1, avgLeftPt2, src.rows);
     }
-
     if (rightCount > 0) {
         rightIntersection = findIntersectionWithLowerBorder(avgRightPt1, avgRightPt2, src.rows);
     }
@@ -280,33 +250,19 @@ void ImageProcessing::filter(const cv::Mat& src, cv::Mat& dst, cv::KalmanFilter&
         }
         cv::drawMarker(cdst, midpoint, markerColor, cv::MARKER_CROSS,40, 3 );
     }
-//        else
-//            count1++;
-//            cv::Point pt1, pt2;
-//            double a = cos(theta), b = sin(theta);
-//            double x0 = a * rho, y0 = b * rho;
-//            pt1.x = cvRound(x0 + 1000 * (-b));
-//            pt1.y = cvRound(y0 + 1000 * (a));
-//            pt2.x = cvRound(x0 - 1000 * (-b));
-//            pt2.y = cvRound(y0 - 1000 * (a));
-//            line(cdst, pt1, pt2, cv::Scalar(255, 0, 0), 1, cv::LINE_AA);
-//        std::cout << "nukmber of lines outside : " << count1 << std::endl;
     
-    
-//    // Probabilistic Line Transform
-//     std::vector<cv::Vec4i> linesP; // will hold the results of the detection
-//    HoughLinesP(masked, linesP, 2, CV_PI/180, 50,50,150);//20, 20, 3 ); // runs the actual detection 50 50 10 // 20 10 3
-//     // Draw the lines
-//     for( size_t i = 0; i < linesP.size(); i++ )
-//     {
-//     cv::Vec4i l = linesP[i];
-//     line( cdst1, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), cv::Scalar(0,255,0), 2, cv::LINE_AA);
-//     }
-//    disp(cdst1,"HoughLineP",1);
-    
-    
-    
-    
+    if (DISP_HOUGHLINEP){
+        // Probabilistic Line Transform
+        std::vector<cv::Vec4i> linesP; // will hold the results of the detection
+        HoughLinesP(masked, linesP, 2, CV_PI/180, 50,50,150);//20, 20, 3
+        // Draw the lines
+        for( size_t i = 0; i < linesP.size(); i++ )
+        {
+            cv::Vec4i l = linesP[i];
+            line( cdst1, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), cv::Scalar(0,255,0), 2, cv::LINE_AA);
+        }
+        disp(cdst1,"HoughLineP",1);
+    }
     
     dst = cdst.clone(); // Update the destination with the final result
 }

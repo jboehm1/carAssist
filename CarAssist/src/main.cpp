@@ -10,11 +10,52 @@
 #include "imageProcessing.hpp"
 #include "stereo.hpp"
 #include <vector>
+#include <filesystem>
 
 int main(int argc, const char * argv[]) {
     
+
+    
+    
+    std::cout << "Starting...\n";
+    std::cout << "Use argument `3d` to run stereovision, `disp to display intermediate filtering in lane detection!\n";
+
+    std::cout << "Press ESC to quit\n";
+
+    // Default argument value
     bool DISP=false;
-    bool use3D=true;
+    bool use3D = false;
+    std::string imagePath = "../CarAssist/img/20"; // Default path
+    // Check for command-line arguments
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if (arg == "3d" || arg == "3D") {
+            use3D = true;
+        } 
+        else if (arg == "disp" || arg == "DISP") {
+            DISP = true;
+        }
+        else {
+            imagePath = arg; // Assume any other argument is the path
+        }
+    }
+    // Print current working directory for debugging
+        std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
+        std::cout << "Using image path: " << imagePath << std::endl;
+
+    
+    
+    
+    // Convert to absolute path
+    std::__fs::filesystem::path absolutePath = std::__fs::filesystem::absolute(std::__fs::filesystem::path(imagePath));
+       std::cout << "Starting..." << std::endl;
+       std::cout << "Use argument `3d` to run stereovision, `disp to display intermediate filtering in lane detection!" << std::endl;
+       std::cout << "Press ESC to quit" << std::endl;
+       std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
+       std::cout << "Using image path: " << absolutePath << std::endl;
+    
+    
+    
     
     // Initialize Kalman filters for left and right lanes
     cv::KalmanFilter avgLeft1 = ImageProcessing::initKalmanFilter();
@@ -23,13 +64,15 @@ int main(int argc, const char * argv[]) {
     cv::KalmanFilter avgRight2 = ImageProcessing::initKalmanFilter();
     
     if (!use3D){
-        std::string captureSource("sequence");// images, webcam, video, sequences
-        std::cout << "Starting!\n";
+        std::string captureSource("sequence");
+        std::cout << "Starting in 3D mode!\n";
         std::vector<cv::String> fn;
-        if (captureSource=="images")
-            cv::glob("/Users/jeanb/Documents/weiterbildung/cpp/CarAssist/CarAssist/img/*.jpg", fn, false);
-        else if (captureSource=="sequence")
-            cv::glob("/Users/jeanb/Documents/weiterbildung/cpp/CarAssist/CarAssist/img/20/image_0/*.png", fn, false);
+
+        if (captureSource == "images") {
+            cv::glob(imagePath + "/*.jpg", fn, false);
+        } else if (captureSource == "sequence") {
+            cv::glob(imagePath + "/image_0/*.png", fn, false);
+        }
         std::vector<cv::Mat> images;
         size_t count = fn.size();
         std::cout << "Found "<< count<< " images." << std::endl;
@@ -48,7 +91,6 @@ int main(int argc, const char * argv[]) {
             // Calculate FPS
                 int fps = 1.0 / elapsed.count();
             cv::putText(img_filtered, "FPS: " + std::to_string(fps), cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 0, 0), 2);
-            std::cout << "FPS:"<<fps<<"/";
             ImageProcessing::disp(img_filtered, "lines", 1);
             char c = (char)cv::waitKey(1);
             if (c == 27)
@@ -103,7 +145,9 @@ int main(int argc, const char * argv[]) {
             
             cv::imshow("Stereo Images and Disparity", finalDisplay);
             cv::waitKey(1);
-            
+            char c = (char)cv::waitKey(1);
+            if (c == 27)
+                break;
 //            ImageProcessing::crop(leftImage, leftImage,
 //                                  55);
 //            ImageProcessing::filter(leftImage, leftImage, avgLeft1, avgLeft2, avgRight1, avgRight2);

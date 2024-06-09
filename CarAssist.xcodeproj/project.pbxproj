@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		1FADDD842C0F72DD005DF824 /* imageProcessing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD822C0F72DD005DF824 /* imageProcessing.cpp */; };
 		1FADDD8D2C0F79E8005DF824 /* stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD8B2C0F79E8005DF824 /* stereo.cpp */; };
-		1FADDD952C109ED4005DF824 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDD932C109ED4005DF824 /* ai.cpp */; };
 		1FADDDB22C12648B005DF824 /* laneDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDDB12C12648B005DF824 /* laneDetection.cpp */; };
-		1FADDDB42C1264AC005DF824 /* videoAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */; };
 		1FADDDCC2C127FBD005DF824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FADFBE82C0F083E006BE25E /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -37,14 +35,10 @@
 		1FADDD8F2C0F7E5F005DF824 /* road1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = road1.jpg; sourceTree = "<group>"; };
 		1FADDD912C0F9B97005DF824 /* c-est-une-premiere-en-france-une-route-departementale-va-etre-fermee-a-des-fins-de-preservation-des-especes-animales-photo-d-illustration-jaclou-dl-pixabay-1638451755.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "c-est-une-premiere-en-france-une-route-departementale-va-etre-fermee-a-des-fins-de-preservation-des-especes-animales-photo-d-illustration-jaclou-dl-pixabay-1638451755.jpg"; sourceTree = "<group>"; };
 		1FADDD922C0F9B97005DF824 /* Route-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Route-7.jpg"; sourceTree = "<group>"; };
-		1FADDD932C109ED4005DF824 /* ai.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
-		1FADDD942C109ED4005DF824 /* ai.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ai.hpp; sourceTree = "<group>"; };
 		1FADDDA92C125F15005DF824 /* test_image_processing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_image_processing.cpp; sourceTree = "<group>"; };
 		1FADDDAE2C126000005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		1FADDDAF2C12633F005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		1FADDDB12C12648B005DF824 /* laneDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = laneDetection.cpp; sourceTree = "<group>"; };
-		1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = videoAnalysis.cpp; sourceTree = "<group>"; };
-		1FADDDB52C1264B4005DF824 /* videoAnalysis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = videoAnalysis.hpp; sourceTree = "<group>"; };
 		1FADDDB62C1265DB005DF824 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		1FADDDCD2C14AC09005DF824 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1FADFBE52C0F083E006BE25E /* CarAssist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarAssist; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,12 +81,8 @@
 				1FADFBE82C0F083E006BE25E /* main.cpp */,
 				1FADDD822C0F72DD005DF824 /* imageProcessing.cpp */,
 				1FADDD832C0F72DD005DF824 /* imageProcessing.hpp */,
-				1FADDD932C109ED4005DF824 /* ai.cpp */,
-				1FADDD942C109ED4005DF824 /* ai.hpp */,
 				1FADDDB12C12648B005DF824 /* laneDetection.cpp */,
 				1FADDD862C0F7307005DF824 /* laneDetection.hpp */,
-				1FADDDB32C1264AC005DF824 /* videoAnalysis.cpp */,
-				1FADDDB52C1264B4005DF824 /* videoAnalysis.hpp */,
 				1FADDD8B2C0F79E8005DF824 /* stereo.cpp */,
 				1FADDD8C2C0F79E8005DF824 /* stereo.hpp */,
 				1FADDDB62C1265DB005DF824 /* CMakeLists.txt */,
@@ -190,8 +180,6 @@
 				1FADDDB22C12648B005DF824 /* laneDetection.cpp in Sources */,
 				1FADDD842C0F72DD005DF824 /* imageProcessing.cpp in Sources */,
 				1FADDD8D2C0F79E8005DF824 /* stereo.cpp in Sources */,
-				1FADDDB42C1264AC005DF824 /* videoAnalysis.cpp in Sources */,
-				1FADDD952C109ED4005DF824 /* ai.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
