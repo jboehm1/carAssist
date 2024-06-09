@@ -45,6 +45,7 @@ Work is still needed to get a real object detection from stereovision.
 ### Running the Program
 To run the program, navigate to the **`build/src`** directory and execute the program:
     ```
+    cd build/src
     ./CarAssist [options] [path]
     ```
 ### Options
