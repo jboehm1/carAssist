@@ -168,10 +168,10 @@ To run the program, navigate to the **build** directory and execute the program:
     ./CarAssist [options] [path]
     ```
 ### Options
-- 3d: Run in 3D mode (stereovision).
-- disp: Display intermediate filtering results.
+- `3d`: Run in 3D mode (stereovision).
+- `disp`: Display intermediate filtering results.
 ### Arguments
-- [path]: Path to the images. Defaults to ../CarAssist/img/20.
+- `[path]`: Path to the images. Defaults to `../CarAssist/img/20`.
 
 ### Examples
 - Run in 2D mode with default path:
