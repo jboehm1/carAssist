@@ -215,6 +215,16 @@ CarAssist/
 └── image_0/
 └── *.png
 
+.
+├── ...
+├── docs                    # Documentation files (alternatively `doc`)
+│   ├── TOC.md              # Table of contents
+│   ├── faq.md              # Frequently asked questions
+│   ├── misc.md             # Miscellaneous information
+│   ├── usage.md            # Getting started guide
+│   └── ...                 # etc.
+└── ...
+
 ## Contributing
 Contributions are welcome! Please follow these steps:
 
