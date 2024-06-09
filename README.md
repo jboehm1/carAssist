@@ -209,13 +209,9 @@ CarAssist/
 │ ├── stereo.hpp
 │ ├── videoAnalysis.cpp
 │ └── videoAnalysis.hpp
-├── test/
-│ ├── CMakeLists.txt
-│ └── test_image_processing.cpp
-└── img/
-└── 20/
-└── image_0/
-└── *.png
+└── test/
+  ├── CMakeLists.txt
+  └── test_image_processing.cpp
 ```
 
 ## Contributing
