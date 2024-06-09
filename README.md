@@ -198,22 +198,22 @@ CarAssist/
 ├── CMakeLists.txt
 ├── README.md
 ├── src/
-│ ├── imageProcessing.cpp
-│ ├── imageProcessing.hpp
-│ ├── laneDetection.cpp
-│ ├── laneDetection.hpp
-│ ├── main.cpp
-│ ├── stereo.cpp
-│ ├── stereo.hpp
-│ ├── videoAnalysis.cpp
-│ └── videoAnalysis.hpp
+│   ├── imageProcessing.cpp
+│   ├── imageProcessing.hpp
+│   ├── laneDetection.cpp
+│   ├── laneDetection.hpp
+│   ├── main.cpp
+│   ├── stereo.cpp
+│   ├── stereo.hpp
+│   ├── videoAnalysis.cpp
+│   └── videoAnalysis.hpp
 ├── test/
-│ ├── CMakeLists.txt
-│ └── test_image_processing.cpp
+│   ├── CMakeLists.txt
+│   └── test_image_processing.cpp
 └── img/
-└── 20/
-└── image_0/
-└── *.png
+    └── 20/
+        └── image_0/
+            └── *.png
 
 
 ## Contributing
